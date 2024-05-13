@@ -70,6 +70,7 @@ struct ContentView: View {
                             .font(.body1)
                             .foregroundColor(Color(.indigo600))
                         Text("\(result) anos")
+                            .contentTransition(.numericText())
                             .font(.display)
                             .frame(maxHeight: 150)
                             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
@@ -134,10 +135,13 @@ struct ContentView: View {
             return
         }
         
-        result = porteSelecionado.conversaoDeIdade(
-            anos: years,
-            meses: months
-        )
+        withAnimation (.easeIn.speed(0.5)) {
+            result = porteSelecionado.conversaoDeIdade(
+                anos: years,
+                meses: months
+            )
+        }
+        
     }
 }
 
